@@ -1,0 +1,13 @@
+{
+    "id_proveidors": ObjectId("507f1f77bcf86cd799439011"),
+    "nom": "Lorem",
+    "telefon": 93654123,
+    "fax": 93654124,
+    "NIF": "44258778F",
+    "carrer": "Lorem",
+    "numero": "Lorem",
+    "porta": "Lorem",
+    "ciutat": "Lorem",
+    "codi_postal": 08905,
+    "pais": "Lorem"
+}

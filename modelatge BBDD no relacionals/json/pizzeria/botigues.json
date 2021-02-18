@@ -1,0 +1,13 @@
+{
+    "id_botigues": ObjectId("507f1f77bcf86cd799439011"),
+    "adreça": "Lorem",
+    "codi_postal": "Lorem",
+    "localitat": "Lorem",
+    "provincia": "Lorem",
+    "empleats": [
+        {
+            "id_empleats": ObjectId("507f1f77bcf86cd799439011"),
+            "cuiner_o_repartidor": "Lorem"
+        }
+    ]
+}

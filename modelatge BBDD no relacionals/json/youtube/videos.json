@@ -1,0 +1,28 @@
+{
+    "id_videos": ObjectId("507f1f77bcf86cd799439011"),
+    "id_usuaris_publica": ObjectId("507f1f77bcf86cd799439011"),
+    "data_hora_publicacio": ISODate("2016-04-08T15:06:21.595Z"),
+    "titol": "Lorem",
+    "descripcio": "Lorem",
+    "grandaria": 83,
+    "nom_arxiu_video": "Lorem",
+    "durada_video": 34,
+    "thumbnail": BinData(1,"232sa3d323sd232a32sda3s2d3a2s1d23s21d3sa"),
+    "nombre_reproduccions": 48,
+    "estat": "Lorem",
+    "etiquetes": [
+        "Lorem"
+    ],
+    "suma_likes": 36,
+    "suma_dislikes": 52,
+    "data_inici": ISODate("2016-04-08T15:06:21.595Z"),
+    "data_fi": ISODate("2016-04-08T15:06:21.595Z"),
+    "likes_dislikes": [
+        {
+            "id_usuaris": ObjectId("507f1f77bcf86cd799439011"),
+            "id_video": ObjectId("507f1f77bcf86cd799439011"),
+            "data_hora": ISODate("2016-04-08T15:06:21.595Z"),
+            "like": true
+        }
+    ]
+}

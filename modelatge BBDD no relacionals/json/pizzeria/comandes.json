@@ -1,0 +1,11 @@
+{
+    "id_comandes": ObjectId("507f1f77bcf86cd799439011"),
+    "data_hora": ISODate("2016-04-08T15:06:21.595Z"),
+    "domicili_o_botiga": "botiga",
+    "quantitat_producte": 32,
+    "preu_total": 160,
+    "id_clients": ObjectId("507f1f77bcf86cd799439011"),
+    "id_botigues": ObjectId("507f1f77bcf86cd799439011"),
+    "id_empleats": ObjectId("507f1f77bcf86cd799439011"),
+    "id_productes": ObjectId("507f1f77bcf86cd799439011")
+}

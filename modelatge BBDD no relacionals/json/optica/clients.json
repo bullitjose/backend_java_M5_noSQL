@@ -1,0 +1,24 @@
+{
+    "id_client": ObjectId("507f1f77bcf86cd799439011"),
+    "nom": "Lorem",
+    "adreça_postal": "Lorem",
+    "telefon": 93654123,
+    "data_registre": ISODate("2016-04-08T15:06:21.595Z"),
+    "client_recomana": [
+        ObjectId("507f1f77bcf86cd799439011")
+    ],
+    "ulleres": [
+        {
+            "graduacio_vidre_esquerre": "Lorem",
+            "marca": "Lorem",
+            "graduacio_vidre_dret": "Lorem",
+            "preu": 25,
+            "data_alta": ISODate("2016-04-08T15:06:21.595Z"),
+            "tipus_muntura": "Lorem",
+            "color_vidre_esquerra": "Lorem",
+            "color_vidre_dret": "Lorem",
+            "id_proveidor": ObjectId("507f1f77bcf86cd799439011"),
+            "id_empleat": ObjectId("507f1f77bcf86cd799439011")
+        }
+    ]
+}

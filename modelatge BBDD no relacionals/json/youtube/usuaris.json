@@ -1,0 +1,25 @@
+{
+    "id_usuaris": ObjectId("507f1f77bcf86cd799439011"),
+    "email": "Lorem",
+    "password": "Lorem",
+    "nom_usuari": "Lorem",
+    "data_naixement": "2011-06-14T04:12:36.123Z",
+    "sexe": "Lorem",
+    "codi_postal": 089025,
+    "canals_creats": [
+        ObjectId("507f1f77bcf86cd799439011")
+    ],
+    "subscripcio_canals": [
+        ObjectId("507f1f77bcf86cd799439011")
+    ],
+    "playlists": [
+        {
+            "nom": "Lorem",
+            "data_creacio": "2011-06-14T04:12:36.123Z",
+            "estat": true,
+            "id_videos": [
+                ObjectId("507f1f77bcf86cd799439011")
+            ]
+        }
+    ]
+}

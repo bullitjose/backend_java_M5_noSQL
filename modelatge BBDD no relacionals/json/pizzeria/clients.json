@@ -1,0 +1,10 @@
+{
+    "id_clients": ObjectId("507f1f77bcf86cd799439011"),
+    "nom": "Lorem",
+    "cognoms": "Lorem",
+    "adreça": "Lorem",
+    "telefon": "Lorem",
+    "codi_postal": "08905",
+    "localitat": "Lorem",
+    "provincia": "Lorem"
+}

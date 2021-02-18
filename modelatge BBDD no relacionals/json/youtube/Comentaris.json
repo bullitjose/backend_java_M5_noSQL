@@ -1,0 +1,17 @@
+{
+    "id_comentaris": ObjectId("507f1f77bcf86cd799439011"),
+    "text": "Lorem",
+    "data_realitzacio": ISODate("2016-04-08T15:06:21.595Z"),
+    "suma_likes": 15,
+    "suma_dislikes": 99,
+    "data_inici": ISODate("2016-04-08T15:06:21.595Z"),
+    "data_fi": ISODate("2016-04-08T15:06:21.595Z"),
+    "registre_likes": [
+        {
+            "id_usuaris": ObjectId("507f1f77bcf86cd799439011"),
+            "id_video": ObjectId("507f1f77bcf86cd799439011"),
+            "data_hora_creacio": ISODate("2016-04-08T15:06:21.595Z"),
+            "like": true
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "id_canals": ObjectId("507f1f77bcf86cd799439011"),
+    "nom": "Lorem",
+    "descripcio": "Lorem",
+    "data_hora_creacio": ISODate("2016-04-08T15:06:21.595Z")
+}

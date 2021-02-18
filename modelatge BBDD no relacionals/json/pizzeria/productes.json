@@ -1,0 +1,9 @@
+{
+    "id_productes": ObjectId("507f1f77bcf86cd799439011"),
+    "nom": "Lorem",
+    "descripcio": "Lorem",
+    "imatge": BinData(1,"232sa3d323sd232a32sda3s2d3a2s1d23s21d3sa"),
+    "preu": 79,
+    "tipus_producte": "Lorem",
+    "categories": "Lorem"
+}
