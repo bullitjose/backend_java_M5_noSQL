@@ -1,0 +1,245 @@
+.NIVELL 2 —_—
+
+1. Escriu una consulta per trobar els restaurants quins no preparen cap cuisine de 'American' iva aconseguir un
+punt de grau 'A' no pertany a Brooklyn. S'ha de mostrar el document segons la cuisine en ordre descendent
+
+db.getCollection("restaurants").find(
+    { 
+        "cuisine" : { 
+            "$ne" : "American"
+        }, 
+        "grades.grade" : "A", 
+        "borough" : "Brooklyn"
+    }
+).sort(
+    { 
+        "cuisine" : -1.0
+    }
+);
+
+2. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants quin
+contenir 'Wil' com les tres primeres lletres en el seu nom
+
+db.restaurants.find(
+    {
+        "name":{$regex: /^Wil/i}
+    }, 
+    {
+        "restaurant_id": 1.0,
+        "name": 1.0,
+        "borough": 1.0,
+        "cuisine": 1.0
+    }
+);
+
+
+3. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants quin
+contenir 'ces' com les ultim tres lletres en el seu nom
+
+db.restaurants.find(
+    {
+        "name":{$regex: /ces$/i}
+    }, 
+    {
+        "restaurant_id": 1.0,
+        "name": 1.0,
+        "borough": 1.0,
+        "cuisine": 1.0
+    }
+);
+
+
+
+
+4. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants quin
+contenir 'Reg' com tres Iletres en algun lloc en el seu nom
+
+db.restaurants.find(
+    {
+        "name":{$regex: /Reg/i}
+    }, 
+    {
+        "restaurant_id": 1.0,
+        "name": 1.0,
+        "borough": 1.0,
+        "cuisine": 1.0
+    }
+);
+
+
+5. Escriu una consulta per trobar els restaurants quins pertanyen al Bronx i va preparar qualsevol plat American
+o xines
+
+db.restaurants.find({
+    $and: [{
+        "borough": "Bronx"
+    },
+    {
+        $or: [
+            {
+                "cuisine": "American "
+            },
+            {
+                "cuisine":{$regex: /^Chinese/i}
+            }
+        ]
+    }
+    ]
+}
+);
+
+
+6. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que
+pertanyen a Staten Island o Queens o Bronx o Brooklyn
+
+
+db.getCollection("restaurants").find(
+    { 
+        "$or" : [
+            { 
+                "borough" : "Bronx"
+            }, 
+            { 
+                "borough" : "Brooklyn"
+            }, 
+            { 
+                "borough" : "Queens"
+            }, 
+            { 
+                "borough" : "Staten Island"
+            }
+        ]
+    },
+
+    { 
+        "restaurant_id" : 1.0, 
+        "name" : 1.0, 
+        "borough" : 1.0, 
+        "cuisine" : 1.0
+    }
+);
+
+7Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que no
+pertanyen a Staten Island o Queens o Bronxor Brooklyn
+
+db.getCollection("restaurants").find(
+    { 
+        "$and" : [
+            { 
+                "borough" : { 
+                    "$ne" : "Bronx"
+                }
+            }, 
+            { 
+                "borough" : { 
+                    "$ne" : "Brooklyn"
+                }
+            }, 
+            { 
+                "borough" : { 
+                    "$ne" : "Queens"
+                }
+            }, 
+            { 
+                "borough" : { 
+                    "$ne" : "Staten Island"
+                }
+            }
+        ]
+    },
+
+    { 
+        "restaurant_id" : 1.0, 
+        "name" : 1.0, 
+        "borough" : 1.0, 
+        "cuisine" : 1.0
+    }
+);
+
+
+8. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que
+aconsegueixin un marcador que no és més que 10
+
+--això mostra només el que tenen score>10!!
+db.restaurants.aggregate([
+   {
+      $project: {
+         grades: {
+            $filter: {
+               input: "$grades",
+               as: "grade",
+               cond: { $lte: [ "$$grade.score", 10 ] }
+            }
+         }
+      }
+   }
+]);
+
+--això mostra els que almenys tenen un score més petit o igual que 10
+
+db.getCollection("restaurants").find(
+    { 
+        "grades.score" : { 
+            "$lte" : NumberLong(10)
+        }
+    }
+);
+
+
+9. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que
+preparen peix excepte 'American' i 'Chinees' o el name del restaurant comeng¢ga amb lletres 'Wil'
+
+Si fem >db.restaurants.distinct("cuisine") ,obtenim les diferents cuines de la base de dades, entre elles està "Seafood" que escollim per discriminar les cuines que preparen peix, per tant la querie quedarà:
+ 
+db.restaurants.find(
+    {
+        "$and": [
+            {
+                "name": {
+                    "$not":{$regex: /^Wil/i}
+                }
+            },
+            {
+                "cuisine": "Seafood"
+            }
+        ]
+    }, 
+    {
+        "restaurant_id": 1.0,
+        "name": 1.0,
+        "cuisine": 1.0,
+        "borough": 1.0
+    }
+);
+
+
+10.Escriu una consulta per trobar el restaurant_id, name, i grades per a aquells restaurants que aconsegueixin un
+grau "A" i un score 11 en dades d'estudi ISODate "2014-08-11T00:00:00Z"
+
+db.restaurants.find(
+    {
+        "grades.grade": "A",
+        "grades.score": 11.0,
+        "grades.date": ISODate("2014-08-11T00:00:00.000Z")
+    }, 
+    {
+        "name": 1.0,
+        "grades": 1.0,
+        "restaurant_id": 1.0
+    }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

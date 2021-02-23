@@ -1,0 +1,178 @@
+NIVELL 3 —_—
+
+1. Escriu una consulta per trobar el restaurant_id, name i grades per a aquells restaurants on el 2n element de
+varietat de graus conté un grau de "A" i marcador 9 sobre un |ISODate "2014-08-11T00:00:00Z"
+
+
+db.restaurants.find(
+    {
+        "grades.1.grade": "A",
+        "grades.1.score": 9.0,
+        "grades.1.date": ISODate("2014-08-11T00:00:00.000Z")
+    }, 
+    {
+        "name": 1.0,
+        "grades": 1.0,
+        "restaurant_id": 1.0
+    }
+);
+
+
+
+2. Escriu una consulta per trobar el restaurant_id, name, adrega i ubicaci6 geografica per a aquells restaurants
+on el segon element del array coord conté un valor quin és més que 42 i fins a 52
+
+db.getCollection("restaurants").find(
+    { 
+        "address.coord.1" : { 
+            "$gt" : 42.0, 
+            "$lte" : 52.0
+        }
+    }, 
+    { 
+        "restaurant_id" : 1.0, 
+        "name" : 1.0, 
+        "address" : 1.0, 
+        "borough" : 1.0
+    }
+);
+
+
+3. Escriu una consulta per organitzar el nom dels restaurants en ordre ascendent juntament amb totes les
+columnes
+
+
+db.getCollection("restaurants").find({}, 
+    { 
+        "name" : 1.0, 
+        "_id" : 1.0, 
+        "address" : 1.0, 
+        "borough" : 1.0, 
+        "cuisine" : 1.0, 
+        "grades" : 1.0, 
+        "restaurant_id" : 1.0
+    }
+).sort(
+    { 
+        "name" : 1.0
+    }
+);
+
+
+4. Escriu una consulta per organitzar el nom dels restaurants en descendir juntament amb totes les columnes
+
+db.getCollection("restaurants").find({}, 
+    { 
+        "name" : 1.0, 
+        "_id" : 1.0, 
+        "address" : 1.0, 
+        "borough" : 1.0, 
+        "cuisine" : 1.0, 
+        "grades" : 1.0, 
+        "restaurant_id" : 1.0
+    }
+).sort(
+    { 
+        "name" : -1.0
+    }
+);
+
+
+
+
+
+5. Escriu una consulta a organitzar el nom de la cuisine en ordre ascendent i per el mateix barri de cuisine. Ordre
+descendint
+
+
+db.restaurants.aggregate([
+
+
+    { "$group": { _id: { cuisine: "$cuisine", borough: "$borough" }, count: { $sum: 1 } } },
+    { $sort: { "cuisine": -1.0 } }
+]);
+
+
+6. Escriu una consulta per saber tant si totes les direccions contenen el carrer o no
+
+db.restaurants.find ( { "address.street" : {$exists : true } } )
+
+
+
+7.Escriu una consulta quin seleccionara tots el documents en la colleccié de restaurants on el valor del camp
+coord és Double
+
+db.restaurants.find( { "address.coord" : { $type : "double" } } )
+
+
+8. Escriu una consulta quin seleccionara el restaurant_id, name i grade per a aquells restaurants quins retorns O
+com a resta després de dividir el marcador per 7
+
+db.restaurants.find({ "grades.score": { $mod: [7, 0] } },
+    {
+        
+        
+        "grades": 1.0,
+        "name": 1.0,
+        "restaurant_id": 1.0,
+    });
+
+
+
+9. Escriu una consulta per trobar el name de restaurant, borough, longitud i altitud i cuisine per a aquells
+restaurants que contenen 'mon'com tres lletres en algun lloc del seu name
+
+db.restaurants.find(
+    {
+        "name":{$regex: /mon/i}
+    }, 
+    {
+        
+        "name": 1.0,
+        "borough": 1.0,
+        "coord.0":1.0,
+        "coord.1":1.0,
+        "cuisine": 1.0
+    }
+);
+
+
+
+10.Escriu una consulta per trobar el name de restaurant, borough, longitud i latitud i cuisine per a aquells
+restaurants que conteinen 'Mad' com primeres tres lletres del seu name
+
+db.restaurants.find(
+    {
+        "name":{$regex: /^Mad/i}
+    }, 
+    {
+        
+        "name": 1.0,
+        "borough": 1.0,
+        "coord.0":1.0,
+        "coord.1":1.0,
+        "cuisine": 1.0
+    }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
